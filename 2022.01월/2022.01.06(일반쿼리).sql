@@ -166,12 +166,12 @@ insert into(생성하다)
 insert into emp   
 (empno(사원번호), ename, job, mgr(사수번호), hiredate, sal, comm(보너스), deptno(부서번호))  
 values  
-(7970,'류근환','salesman',7369,'2022-01-06',5000,1000,30)  
+(7970,'오승택','salesman',7369,'2022-01-06',5000,1000,30)  
 >* Ex)  
 insert into emp   
 (empno(사원번호),ename,job,mgr(사수번호),hiredate,sal,comm(보너스))  
 values  
-(7970,'류근환','salesman',7369,'2022-01-06',5000,1000)   
+(7970,'오승택','salesman',7369,'2022-01-06',5000,1000)   
 (deptno가 빠지면 deptno는 null(데이터를 넣지 않는것)이 된다)
 
 update(업데이트)
