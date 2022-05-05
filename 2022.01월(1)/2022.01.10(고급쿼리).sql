@@ -185,16 +185,26 @@ from emp
 where job = (select job from emp where empno = 7876)
 01월10일문제
 
-부서명이 RESEARCH인 사원의 이름,급여,근무 지역 출력 select e.ename, e.sal, d.LOC, d.dname from emp as e join dept as d on e.deptno = d.DEPTNO where d.dname = 'research'
-보너스를 받는 사원에 대해 이름, 업무, 급여, 부서명을 출력 select e.comm, e.ename, e.job, e.SAL, d.dname from emp as e join dept as d on e.deptno=d.deptno where e.comm is not null and e.comm != 0
-이름 첫글자가 A자를 가진 사원에 대해 이름, 업무, 부서명, 부서 위치를 출력 select e.ename as '이름', e.job as '업무', d.dname as '부서명', d.loc as '부서 위치' from emp as e left join dept as d on e.deptno = d.deptno where e.ename like 'A%'
-###4) 사원명, 사수번호, 사수 이름을 출력 단, ***사수가 없는 사원도 포함 select sawon.ename as "사원명", sawon.mgr as '사수번호', boss.ename as '사수이름' from emp as sawon left join emp as boss on sawon.mgr = boss.empno
+부서명이 RESEARCH인 사원의 이름,급여,근무 지역 출력   
+select e.ename, e.sal, d.LOC, d.dname from emp as e join dept as d on e.deptno = d.DEPTNO where d.dname = 'research'
+
+보너스를 받는 사원에 대해 이름, 업무, 급여, 부서명을 출력 
+select e.comm, e.ename, e.job, e.SAL, d.dname from emp as e join dept as d on e.deptno=d.deptno where e.comm is not null and e.comm != 0
+
+이름 첫글자가 A자를 가진 사원에 대해 이름, 업무, 부서명, 부서 위치를 출력 
+select e.ename as '이름', e.job as '업무', d.dname as '부서명', d.loc as '부서 위치' from emp as e left join dept as d on e.deptno = d.deptno where e.ename like 'A%'
+
+###4) 사원명, 사수번호, 사수 이름을 출력 단, ***사수가 없는 사원도 포함 
+select sawon.ename as "사원명", sawon.mgr as '사수번호', boss.ename as '사수이름' from emp as sawon left join emp as boss on sawon.mgr = boss.empno
 
 ###5) 사원명, 사수번호, 사수 이름을 출력 단, ***사수가 없는 사원만
 select sawon.ename as '사원명', sawon.mgr as '사수번호', boss.ename as '사수이름' from emp as sawon left join emp as boss on sawon.mgr = boss.empno where sawon.mgr is null
 
-상사번호가 7698인 사원의 이름, 사원번호, 상사번호, 상사명을 출력 select sawon.ename as '사원이름', sawon.empno as '사원번호', sawon.mgr as '상사 번호', boss.ename as '상사이름' from emp as sawon join emp as boss on sawon.mgr = boss.EMPNO where sawon.mgr = 7698
-상사보다 먼저 입사한 사원의 사원이름, 사원의 입사일, 상사 이름, 상사 입사일을 출력 select sawon.ename as '사원 이름', sawon.hiredate as '사원입사일', boss.ename as '상사 이름', boss.hiredate as '상사 입사일' from emp as sawon join emp as boss on sawon.hiredate < boss.hiredate
+상사번호가 7698인 사원의 이름, 사원번호, 상사번호, 상사명을 출력 
+select sawon.ename as '사원이름', sawon.empno as '사원번호', sawon.mgr as '상사 번호', boss.ename as '상사이름' from emp as sawon join emp as boss on sawon.mgr = boss.EMPNO where sawon.mgr = 7698
+
+상사보다 먼저 입사한 사원의 사원이름, 사원의 입사일, 상사 이름, 상사 입사일을 출력 
+select sawon.ename as '사원 이름', sawon.hiredate as '사원입사일', boss.ename as '상사 이름', boss.hiredate as '상사 입사일' from emp as sawon join emp as boss on sawon.hiredate < boss.hiredate
 업무가 MANAGER이거나 CLERK고 입사날짜가 1982년에 입사한 사원의 사원번호, 이름, 급여, 직업, 부서명을 출력. select e.empno as '사원번호', e.ename as '사원이름', e.sal as '급여', e.job as '직업', d.dname as '부서명', date_format(e.hiredate,'%Y') from emp as e join dept as d on e.deptno = d.DEPTNO where ( e.job = 'manager' or e.job = 'clerk' ) and date_format(e.hiredate, '%Y') = 1982
 부서별 급여 총합을 구하시오.
 단, 사원이 ***존재하지 않는 부서도 포함해서 급여 순으로 내림차순 하시오.
